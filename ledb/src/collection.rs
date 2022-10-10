@@ -325,6 +325,8 @@ impl Collection {
                 count += 1;
             }
         }
+        
+        txn.commit().wrap_err()?;
 
         Ok(count)
     }
@@ -343,6 +345,8 @@ impl Collection {
         }
 
         access.clear_db(&handle.db).wrap_err()
+        
+        txn.commit().wrap_err()?;
     }
 
     /// Checks the collection contains document with specified primary key
