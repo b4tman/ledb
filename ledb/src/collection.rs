@@ -344,9 +344,9 @@ impl Collection {
             index.purge(&mut access)?;
         }
 
-        access.clear_db(&handle.db).wrap_err()
+        access.clear_db(&handle.db).wrap_err()?;
         
-        txn.commit().wrap_err()?;
+        txn.commit().wrap_err()
     }
 
     /// Checks the collection contains document with specified primary key
