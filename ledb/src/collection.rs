@@ -326,6 +326,8 @@ impl Collection {
             }
         }
 
+        txn.commit().wrap_err()?;
+
         Ok(count)
     }
 
